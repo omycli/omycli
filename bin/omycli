@@ -1,0 +1,84 @@
+#!/usr/bin/env node
+'use strict';
+
+process.env.NODE_PATH = __dirname + './../node_modules/';
+
+const program = require('commander');
+const updateNotifier = require('update-notifier');
+const chalk = require('chalk');
+
+const pkg = require('../package.json');
+
+// 新版本更新提醒
+updateNotifier({ pkg, updateCheckInterval: 0 }).notify();
+
+// 定义当前版本
+program.version(pkg.version);
+
+// 定义使用方法
+program.usage('<command>');
+
+program
+    .command('add')
+    .description('添加一个新模板')
+    .alias('a')
+    .action(() => {
+        require('../command/add')();
+    });
+
+program
+    .command('list')
+    .description('展示模板列表')
+    .alias('l')
+    .action(() => {
+        require('../command/list')();
+    });
+
+program
+    .command('init')
+    .description('生成一个模板')
+    .alias('i')
+    .action(() => {
+        require('../command/init')();
+    });
+
+program
+    .command('delete')
+    .description('删除一个模板')
+    .alias('d')
+    .action(() => {
+        require('../command/delete')();
+    });
+
+program.on('--help', function() {
+    console.log('');
+    console.log('');
+    console.log(chalk.yellow('使用规则：'));
+    console.log('');
+    console.log(chalk.grey(' #添加一个新模板'));
+    console.log(chalk.green(' $omycli add  或者使用快捷方式 $omycli a'));
+    console.log('');
+    console.log(chalk.grey(' #展示模板列表'));
+    console.log(chalk.green(' $omycli list  或者使用快捷方式 $omycli ｌ'));
+    console.log('');
+    console.log(chalk.grey(' #生成一个模板'));
+    console.log(chalk.green(' $omycli init  或者使用快捷方式 $omycli i'));
+    console.log('');
+    console.log('－－－－－－－－－－－－－－－－－－－－－－－－－');
+    console.log(chalk.red(' 慎用！！！'));
+    console.log(chalk.grey(' #删除一个模板'));
+    console.log(chalk.green(' $omycli delete  或者使用快捷方式 $omycli d'));
+    console.log('－－－－－－－－－－－－－－－－－－－－－－－－－');
+    console.log('');
+});
+
+program.parse(process.argv);
+
+if (!program.runningCommand && !program.args.length) {
+    console.log('');
+    console.log('  未知的命令: ' + program.args.join(' '));
+    console.log('');
+    console.log('  查看命令帮助，请输入：`omycli --help`');
+    console.log('');
+    program.help();
+}

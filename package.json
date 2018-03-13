@@ -1,0 +1,25 @@
+{
+    "name": "omycli",
+    "version": "1.0.0",
+    "description": "omycli",
+    "main": "index.js",
+    "bin": {
+        "omycli": "./bin/omycli"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "cli",
+        "omycli"
+    ],
+    "author": "Mr.Ypeng",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^2.3.2",
+        "co": "^4.6.0",
+        "co-prompt": "^1.0.0",
+        "commander": "^2.15.0",
+        "update-notifier": "^2.3.0"
+    }
+}
