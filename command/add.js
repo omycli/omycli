@@ -32,8 +32,8 @@ module.exports = async () => {
                     console.log(chalk.red(err));
                 }
                 console.log(chalk.green('新模板创建成功！\n'));
-                console.log(chalk.grey('最新的模板列表：\n'));
-                console.log(chalk.yellow(JSON.stringify(config)));
+                console.log(chalk.grey('最新的扩展库模板列表：\n'));
+                console.log(chalk.yellow(JSON.stringify(config.tpl)));
                 console.log('\n');
                 process.exit();
             }
