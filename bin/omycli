@@ -74,7 +74,7 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-if (!program.runningCommand && !program.args.length) {
+if (!program.runningCommand && !program.args[0]._name) {
     console.log('');
     console.log('  未知的命令: ' + program.args.join(' '));
     console.log('');
