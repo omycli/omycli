@@ -20,10 +20,15 @@
         "co": "^4.6.0",
         "co-prompt": "^1.0.0",
         "commander": "^2.15.0",
+        "cross-spawn": "^6.0.5",
         "download-git-repo": "^1.0.2",
+        "fis3": "^3.4.39",
         "fs-extra": "^5.0.0",
         "inquirer": "^5.1.0",
+        "ip": "^1.1.5",
         "ora": "^2.0.0",
+        "qrcode-terminal": "^0.11.0",
+        "react-dev-utils": "^5.0.0",
         "request": "^2.85.0",
         "update-notifier": "^2.3.0"
     }

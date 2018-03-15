@@ -27,7 +27,7 @@ module.exports = () => {
                 }
                 console.log(chalk.green('模板删除成功！'));
                 console.log(chalk.grey('最新的模板列表：\n'));
-                console.log(chalk.yellow(JSON.stringify(config)));
+                console.log(chalk.yellow(JSON.stringify(config.tpl, null, 4)));
                 console.log('\n');
                 process.exit();
             }

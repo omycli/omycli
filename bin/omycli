@@ -50,6 +50,14 @@ program
         require('../command/delete')();
     });
 
+program
+    .command('start')
+    .description('运行项目')
+    .alias('dev')
+    .action(() => {
+        require('../command/start')();
+    });
+
 program.on('--help', function() {
     console.log('');
     console.log('');
