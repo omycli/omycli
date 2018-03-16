@@ -1,6 +1,6 @@
 {
     "name": "omycli",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "omycli",
     "bin": {
         "omycli": "./bin/omycli"
@@ -11,10 +11,10 @@
     "keywords": ["cli", "omycli"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/weiyunpeng/omycli.git"
+        "url": "https://github.com/omycli/omycli.git"
     },
     "bugs": {
-        "url": "https://github.com/weiyunpeng/omycli/issues"
+        "url": "https://github.com/omycli/omycli/issues"
     },
     "author": "Mr.Ypeng",
     "license": "ISC",
