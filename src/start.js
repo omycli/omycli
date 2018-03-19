@@ -7,7 +7,7 @@ const clearConsole = require('react-dev-utils/clearConsole');
 const qrcode = require('qrcode-terminal');
 
 const fis = module.exports = require('fis3');
-
+fis.cli.version = require('./../fis/version')
 
 
 function run(port) {
@@ -25,4 +25,4 @@ function run(port) {
 }
 
 clearConsole();
-run(8000);
+run(8888);
