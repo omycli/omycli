@@ -1,8 +1,8 @@
 const path = require('path');
 const _ = require('lodash')
 
-const webpack = require('webpack')
 const merge = require('webpack-merge')
+const webpack = require('webpack')
 const NpmInstallPlugin = require('npm-install-webpack-plugin')
 
 const allConfig = require('./config/index')

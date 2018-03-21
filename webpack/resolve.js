@@ -2,17 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 // https://github.com/facebookincubator/create-react-app/issues/637
-const appDirectory = fs.realpathSync(process.cwd());//返回当前工作目录的绝对路径
-
-function resolveApp(relativePath) {
-    // 将一系列路径或路径段解析为绝对路径
+const appDirectory = fs.realpathSync(process.cwd());
+exports.resolveApp = function resolveApp(relativePath) {
     return path.resolve(appDirectory, relativePath);
-}
-
-function resolveOwn(relativePath) {
-    // 将一系列路径或路径段解析为绝对路径
+};
+exports.resolveOwn = function resolveOwn(relativePath) {
     return path.resolve(__dirname, '..', relativePath);
-}
+};
 
 /**
  * check file/dir whether exist
@@ -22,7 +18,7 @@ function resolveOwn(relativePath) {
  *
  * @return boolean
  */
-function isExist(path, type) {
+exports.isExist = function(path, type) {
     let ok = false;
     try {
         const stat = fs.statSync(path);
@@ -32,8 +28,4 @@ function isExist(path, type) {
         ok = false;
     }
     return ok;
-}
-
-exports.resolveApp = resolveApp;
-exports.resolveOwn = resolveOwn;
-exports.isExist = isExist;
+};

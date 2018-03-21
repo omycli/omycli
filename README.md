@@ -7,7 +7,9 @@
 ## 安装使用
 
 ```
-- npm install omycli -g
+- npm install omycli -g --registry=https://registry.npm.taobao.org --SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ 
+--PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/
+
 - 随后直接以omycli作为命名开头，开始使用脚手架了
 - 具体使用可以输入命令 omycli --help 查看
 

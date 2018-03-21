@@ -4,6 +4,8 @@ const chalk = require('chalk');
 const host = require('ip').address();
 const qrcode = require('qrcode-terminal');
 const clearConsole = require('react-dev-utils/clearConsole');
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const openBrowser = require('react-dev-utils/openBrowser');
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
@@ -12,10 +14,10 @@ const webpackConfig = require('./../webpack/webpack.config.dev');
 
 const isInteractive = process.stdout.isTTY; //判断是否为交互j终端打开
 
-const compiler = webpack(webpackConfig);
+let isFirstRun = true;
 
 function setupCompiler(port) {
-    // compiler = webpack(webpackConfig);
+    compiler = webpack(webpackConfig);
 
     compiler.plugin('invalid', function() {
         console.log('');
@@ -43,6 +45,28 @@ function setupCompiler(port) {
             console.log('');
             return;
         }
+        if (isFirstRun) {
+            console.log('');
+            console.log(chalk.cyan('  Compile finished'));
+            console.log('');
+            console.log(chalk.cyan('  Webpack dev server running at: '));
+            console.log('');
+            console.log(chalk.cyan('  http://' + host + ':' + port + '/'));
+            console.log('');
+            if (allConfig.DEVELOPMENT.enableDisplayQR) {
+                qrcode.generate(
+                    'http://' + host + ':' + port + '/',
+                    {
+                        small: true
+                    },
+                    function(qrcode) {
+                        console.log(qrcode);
+                    }
+                );
+            }
+        }
+
+        isFirstRun = false;
     });
 }
 
@@ -57,16 +81,8 @@ function runDevServer(port) {
         console.log();
 
         if (isInteractive) {
+            // openBrowser('http://' + host + ':' + port + '/');
             console.log(chalk.green('http://' + host + ':' + port + '/'));
-            qrcode.generate(
-                'http://' + host + ':' + port + '/',
-                {
-                    small: true
-                },
-                function(qrcode) {
-                    console.log(qrcode);
-                }
-            );
         }
     });
 }
@@ -77,4 +93,4 @@ function run(port) {
 }
 
 clearConsole();
-run(8888);
+run(webpackConfig.devServer.port);
