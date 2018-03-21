@@ -57,6 +57,13 @@ program
         require('../command/start')();
     });
 
+program
+    .command('test')
+    .description('测试')
+    .action(() => {
+        require('../command/test')();
+    });
+
 program.on('--help', function() {
     console.log('');
     console.log('');

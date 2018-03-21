@@ -34,6 +34,6 @@ function isExist(path, type) {
     return ok;
 }
 
-exports.resolveApp = resolveApp();
-exports.resolveOwn = resolveOwn();
-exports.isExist = isExist();
+exports.resolveApp = resolveApp;
+exports.resolveOwn = resolveOwn;
+exports.isExist = isExist;

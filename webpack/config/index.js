@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
