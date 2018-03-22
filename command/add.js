@@ -16,7 +16,7 @@ module.exports = async () => {
         if (!config.tpl[tplName]) {
             config.tpl[tplName] = {};
             config.tpl[tplName]['url'] = gitUrl.replace(/[\u0000-\u0019]/g, '');
-            config.tpl[tplName]['branch'] = branch;
+            config.tpl[tplName]['branch'] = branch || 'master';
             config.tpl[tplName]['description'] = tplDes;
         } else {
             console.log(chalk.red('该模板已经存在了'));

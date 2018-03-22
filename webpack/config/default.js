@@ -134,7 +134,7 @@ module.exports = {
     DEVELOPMENT: {
         OMC_ENV: 'development',
         // 配置是否在 Terminal 显示测试链接二维码
-        enableDisplayQR: false
+        enableDisplayQR: true
     },
 
     /**

@@ -21,23 +21,24 @@ module.exports = () => {
             const requestBody = JSON.parse(body);
             if (Array.isArray(requestBody)) {
                 console.log();
+                console.log('基于模板创建项目:');
+                console.log();
+                console.log('最新的扩展库模板列表：\n');
+                console.log(chalk.magentaBright(JSON.stringify(config.tpl, null, 4)));
+                console.log();
+                console.log();
+                console.log();
+
                 console.log('最新的内置模板列表:');
                 console.log();
                 
                 requestBody.forEach(repo =>
-                    console.log(chalk.yellow(
+                    console.log(chalk.greenBright.bold(
                         '      - ' + repo.name + '  ' + repo.description
                     ))
                 );
                 console.log();
-                console.log();
-                console.log('最新的扩展库模板列表：\n');
-                console.log(chalk.yellow(JSON.stringify(config.tpl, null, 4)));
-                console.log();
-                console.log();
-                console.log('基于模板创建项目:');
-                console.log();
-                // console.log('      omycli init ' + requestBody[0].name);
+                console.log('使用方法：');
                 console.log(chalk.cyan('      omycli init '));
                 console.log();
             } else {

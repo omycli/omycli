@@ -20,10 +20,12 @@ module.exports = () => {
         let projectName = yield prompt('新建的项目名称：') || tplName;
 
         if (config.tpl[tplName]) {
+            //　说明是扩展模板
             let gitUrl = config.tpl[tplName].url;
-            let branch = config.tpl[tplName].branch;
+            let branch = config.tpl[tplName].branch || 'master';
             initExtTpl(gitUrl, branch, projectName);
         } else {
+            // 说明是内置模板
             let destPath = path.resolve(projectName);
             let template = `omycli/${tplName}`;
 
@@ -33,11 +35,13 @@ module.exports = () => {
                         {
                             type: 'confirm',
                             message: '已存在该项目名称的文件夹，是否覆盖？',
-                            name: 'ok'
+                            name: 'y' || 'Y'
                         }
                     ])
                     .then(function(answers) {
-                        if (answers.ok) init(template, destPath, projectName);
+                        if (answers.ok){
+                            init(template, destPath, projectName)
+                        }
                     });
             } else {
                 init(template, destPath, projectName);

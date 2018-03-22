@@ -21,7 +21,7 @@ function setupCompiler(port) {
 
     compiler.plugin('invalid', function() {
         console.log('');
-        console.log(chalk.cyan('  Compiling...'));
+        console.log(chalk.cyan('  开始编译...'));
         console.log('');
     });
 
@@ -41,17 +41,17 @@ function setupCompiler(port) {
 
         if (stats.hasErrors()) {
             console.log('');
-            console.log(chalk.cyan('  Compiling fail!'));
+            console.log(chalk.cyan('  编译失败!'));
             console.log('');
             return;
         }
         if (isFirstRun) {
             console.log('');
-            console.log(chalk.cyan('  Compile finished'));
+            console.log(chalk.cyan('  编译成功!'));
             console.log('');
             console.log(chalk.cyan('  Webpack dev server running at: '));
             console.log('');
-            console.log(chalk.cyan('  http://' + host + ':' + port + '/'));
+            console.log(chalk.green('http://' + host + ':' + port + '/'));
             console.log('');
             if (allConfig.DEVELOPMENT.enableDisplayQR) {
                 qrcode.generate(
@@ -81,8 +81,7 @@ function runDevServer(port) {
         console.log();
 
         if (isInteractive) {
-            // openBrowser('http://' + host + ':' + port + '/');
-            console.log(chalk.green('http://' + host + ':' + port + '/'));
+            openBrowser('http://' + host + ':' + port + '/');
         }
     });
 }
