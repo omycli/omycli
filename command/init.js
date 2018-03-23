@@ -16,8 +16,8 @@ const config = require('../templates');
 
 module.exports = () => {
     co(function*() {
-        let tplName = yield prompt('模板名称：') || 'base';
-        let projectName = yield prompt('新建的项目名称：') || tplName;
+        let tplName = yield prompt('模板名称：');
+        let projectName = yield prompt('新建的项目名称：');
 
         if (config.tpl[tplName]) {
             //　说明是扩展模板
@@ -40,11 +40,11 @@ module.exports = () => {
                     ])
                     .then(function(answers) {
                         if (answers.ok){
-                            init(template, destPath, projectName)
+                            initTpl(template, destPath, projectName)
                         }
                     });
             } else {
-                init(template, destPath, projectName);
+                initTpl(template, destPath, projectName);
             }
         }
 
@@ -57,7 +57,7 @@ module.exports = () => {
                     console.log('');
                     console.log(
                         '  Failed to download repo ' +
-                            chalk.red(template) +
+                            chalk.red(from) +
                             ': ' +
                             err.message.trim()
                     );
@@ -67,7 +67,7 @@ module.exports = () => {
                     // copy default config file
                     console.log('');
                     console.log(
-                        '  基于' + chalk.green(template) + ' 初始化项目成功！'
+                        '  基于' + chalk.green(from) + ' 初始化项目成功！'
                     );
                     console.log('');
                     console.log('你可以按如下操作运行你的项目：');
