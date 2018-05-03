@@ -1,6 +1,6 @@
 {
     "name": "omycli",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "omycli",
     "bin": {
         "omycli": "./bin/omycli"

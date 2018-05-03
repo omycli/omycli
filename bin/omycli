@@ -27,7 +27,7 @@ program
     });
 
 program
-    .command('list')
+    .command('-l')
     .description('展示模板列表')
     .alias('l')
     .action(() => {
@@ -109,11 +109,11 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-if (!program.runningCommand && !program.args[0]._name) {
+if (!program.runningCommand && !program.args[0]) {
     console.log('');
     console.log('  未知的命令: ' + program.args.join(' '));
     console.log('');
     console.log('  查看命令帮助，请输入：`omycli --help`');
     console.log('');
-    program.help();
+    return false
 }
